@@ -1,0 +1,430 @@
+/* Reseteo básico y fuente unificada para TODO el proyecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* =========================================
+   ESTILOS GENERALES DEL BODY
+   ========================================= */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000000;  /* Fondo negro como la pantalla de inicio */
+    color: #ffffff;             /* Texto blanco por defecto */
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL DEL JUEGO
+   ========================================= */
+.game-container {
+    background: transparent;    /* Sin fondo gris, integrado con el negro */
+    padding: 1.5rem;
+    text-align: center;
+    width: 95%;
+    max-width: 480px;
+    margin: 20px auto;
+}
+
+/* Título principal del juego */
+.game-container h2 {
+    color: rgb(200, 16, 46);    /* Rojo Teatro Real */
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(200, 16, 46); /* Línea roja decorativa */
+    padding-bottom: 15px;
+}
+
+/* =========================================
+   SECCIÓN DE AUDIO
+   ========================================= */
+.audio-section {
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+}
+
+.audio-section .selector {
+    margin-bottom: 10px;
+}
+
+#reproductor-audio {
+    width: 100%;
+    max-width: 420px;
+    height: 40px;
+    border-radius: 0;           /* Bordes rectos, estilo Teatro Real */
+    outline: none;
+    filter: invert(1);          /* Invierte los colores del reproductor nativo para que se vea claro sobre fondo negro */
+}
+
+/* =========================================
+   SELECTORES (FLECHAS)
+   ========================================= */
+.selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.05); /* Fondo muy sutil, casi transparente */
+    padding: 10px 15px;
+    border: 1px solid rgba(200, 16, 46, 0.4); /* Borde rojo tenue */
+    border-radius: 0;           /* Bordes rectos */
+}
+
+.selector span {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #ffffff;             /* Texto blanco */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Flechas */
+.flecha {
+    background: rgb(200, 16, 46);   /* Rojo Teatro Real */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 0;               /* Bordes rectos */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.flecha:hover {
+    background: #ffffff;
+    color: rgb(200, 16, 46);
+}
+
+.flecha:active {
+    transform: scale(0.95);         /* Pequeño efecto al pulsar */
+}
+
+/* =========================================
+   SELECTOR DE NOMBRE DE PERSONAJE
+   ========================================= */
+.selector-nombre {
+    margin: 10px auto;
+    width: 100%;
+    background: rgba(200, 16, 46, 0.1);     /* Fondo rojo muy suave para destacarlo */
+    border: 1px solid rgb(200, 16, 46);     /* Borde rojo más marcado que el resto */
+}
+
+.selector-nombre span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    min-width: 150px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* =========================================
+   PREVISUALIZACIÓN DEL PERSONAJE
+   ========================================= */
+.character-preview {
+    position: relative;
+    width: 200px;
+    height: 320px;
+    margin: 15px auto;
+    background: rgba(255, 255, 255, 0.03);  /* Fondo casi invisible */
+    border: 1px solid rgba(200, 16, 46, 0.3); /* Borde rojo sutil */
+}
+
+.parte-personaje {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: contain;
+}
+
+#traje-img {
+    bottom: 0;
+    width: 180px;
+    height: 250px;
+    z-index: 1;
+}
+
+#cabeza-img {
+    top: -30px;
+    width: 300px;
+    height: 300px;
+    margin-left: 5px;
+    z-index: 2;
+}
+
+/* =========================================
+   BOTÓN ADIVINAR
+   ========================================= */
+.btn-adivinar {
+    display: block;
+    width: 100%;
+    margin: 15px auto 10px auto;
+    padding: 15px;
+    background-color: rgb(200, 16, 46);     /* Rojo Teatro Real */
+    color: #ffffff;
+    border: 2px solid rgb(200, 16, 46);
+    border-radius: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-adivinar:hover {
+    background-color: #000000;
+    color: rgb(200, 16, 46);
+    box-shadow: 0 0 25px rgba(200, 16, 46, 0.5);
+}
+
+/* =========================================
+   MENSAJE DE RESULTADO
+   ========================================= */
+.mensaje-resultado {
+    margin: 10px auto 15px auto;
+    width: 100%;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    min-height: 20px;
+    transition: all 0.3s ease;
+}
+
+.mensaje-resultado.correcto {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    padding: 12px;
+    letter-spacing: 2px;
+}
+
+.mensaje-resultado.incorrecto {
+    background-color: rgba(200, 16, 46, 0.15);
+    border: 2px solid rgb(200, 16, 46);
+    color: rgb(200, 16, 46);
+    padding: 12px;
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   BOTÓN VOLVER
+   ========================================= */
+.btn-volver {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 30px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.5);        /* Blanco apagado para que no distraiga */
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS: PANTALLA DE INICIO
+   ========================================= */
+body.pantalla-inicio {
+    background-color: #000000;
+    background-image: none;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+/* --- CRÉDITOS ARRIBA IZQUIERDA --- */
+.creditos-top-left {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 10;
+}
+
+.titulo-uni {
+    color: rgb(200, 16, 46);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.nombres-equipo {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* --- BOTÓN CENTRAL (ROJO TEATRO REAL) --- */
+.centro-inicio {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.btn-jugar {
+    display: inline-block;
+    padding: 15px 60px;
+    background-color: rgb(200, 16, 46);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    border: 2px solid rgb(200, 16, 46);
+    border-radius: 0;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-jugar:hover {
+    background-color: #000000;
+    color: rgb(200, 16, 46);
+    box-shadow: 0 0 20px rgba(200, 16, 46, 0.5);
+}
+
+/* --- LOGO A LA DERECHA --- */
+.logo-derecha {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.logo-derecha img {
+    max-height: 100%;
+    width: auto;
+}
+
+/* =========================================
+   RESPONSIVE MÓVILES
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* --- Juego --- */
+    .game-container {
+        padding: 1rem;
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .game-container h2 {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+
+    .character-preview {
+        width: 160px;
+        height: 270px;
+        margin: 10px auto;
+    }
+
+    #traje-img {
+        width: 140px;
+        height: 200px;
+    }
+
+    #cabeza-img {
+        width: 240px;
+        height: 240px;
+        top: -8px;
+    }
+
+    .selector {
+        padding: 8px 10px;
+        margin: 8px 0;
+    }
+
+    .selector span {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .selector-nombre span {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        min-width: 120px;
+    }
+
+    .flecha {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .btn-adivinar {
+        font-size: 1rem;
+        letter-spacing: 3px;
+        padding: 12px;
+    }
+
+    .mensaje-resultado {
+        font-size: 0.9rem;
+    }
+
+    /* --- Pantalla de Inicio --- */
+    .logo-derecha {
+        position: absolute;
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: 30px;
+        transform: translateX(-50%);
+        height: auto;
+    }
+
+    .logo-derecha img {
+        max-height: 120px;
+    }
+
+    .centro-inicio {
+        top: 40%;
+    }
+
+    .btn-jugar {
+        font-size: 1.5rem;
+        padding: 12px 40px;
+    }
+
+    .creditos-top-left {
+        top: 20px;
+        left: 20px;
+    }
+
+    .titulo-uni {
+        font-size: 1.2rem;
+    }
+
+    .nombres-equipo {
+        font-size: 0.9rem;
+    }
+}

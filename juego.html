@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de Personaje</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h2>Crea tu personaje</h2>
+        
+        <!-- Reproductor de Audio con Selector -->
+        <div class="audio-section">
+            <div class="selector">
+                <button class="flecha" onclick="cambiarAudio(-1)">&#9664;</button>
+                <span>Audio</span>
+                <button class="flecha" onclick="cambiarAudio(1)">&#9654;</button>
+            </div>
+            <audio id="reproductor-audio" controls>
+                <source id="fuente-audio" src="audios/audio1.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+
+        <!-- Selector de Nombre de Personaje -->
+        <div class="selector selector-nombre">
+            <button class="flecha" onclick="cambiarNombre(-1)">&#9664;</button>
+            <span id="nombre-personaje">Titania</span>
+            <button class="flecha" onclick="cambiarNombre(1)">&#9654;</button>
+        </div>
+
+        <!-- Área donde se visualiza el personaje -->
+        <div class="character-preview">
+            <img id="traje-img" class="parte-personaje" src="img/traje1.png" alt="Traje">
+            <img id="cabeza-img" class="parte-personaje" src="img/cabeza1.png" alt="Cabeza">
+        </div>
+
+        <!-- Controles para elegir -->
+        <div class="controles">
+            <!-- Selector de Cabezas -->
+            <div class="selector">
+                <button class="flecha" onclick="cambiarCabeza(-1)">&#9664;</button>
+                <span>Cabeza</span>
+                <button class="flecha" onclick="cambiarCabeza(1)">&#9654;</button>
+            </div>
+
+            <!-- Selector de Trajes -->
+            <div class="selector">
+                <button class="flecha" onclick="cambiarTraje(-1)">&#9664;</button>
+                <span>Traje</span>
+                <button class="flecha" onclick="cambiarTraje(1)">&#9654;</button>
+            </div>
+        </div>
+
+        <!-- NUEVO: Botón Adivinar y mensaje de resultado -->
+        <button class="btn-adivinar" onclick="adivinar()">ADIVINAR</button>
+        <div id="mensaje-resultado" class="mensaje-resultado"></div>
+
+        <a href="index.html" class="btn-volver">Volver al inicio</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
