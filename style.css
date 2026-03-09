@@ -402,10 +402,58 @@ body.pantalla-inicio {
         height: 200px;
     }
 
+    /* BASE de cabeza en móvil */
     #cabeza-img {
         width: 240px;
         height: 240px;
         top: -8px;
+        margin-left: 4px;
+    }
+
+    /* =========================================
+       POSICIÓN INDIVIDUAL DE CADA CABEZA EN MÓVIL
+       Se aplica la misma proporción (80%) que
+       el cambio de tamaño de 300px a 240px
+       ========================================= */
+
+    /* Cabeza 1 - Titania */
+    #cabeza-img.cabeza-0 {
+        top: -26px;       /* -33px * 0.80 ≈ -26px */
+        width: 240px;
+        height: 240px;
+        margin-left: 4px; /* 5px * 0.80 ≈ 4px */
+    }
+
+    /* Cabeza 2 - Bottom */
+    #cabeza-img.cabeza-1 {
+        top: -26px;       /* -32px * 0.80 ≈ -26px */
+        width: 240px;
+        height: 240px;
+        margin-left: 8px; /* 10px * 0.80 = 8px */
+    }
+
+    /* Cabeza 3 - Hermia */
+    #cabeza-img.cabeza-2 {
+        top: -12px;       /* -15px * 0.80 = -12px */
+        width: 240px;
+        height: 240px;
+        margin-left: 4px; /* 5px * 0.80 ≈ 4px */
+    }
+
+    /* Cabeza 4 - Lysander */
+    #cabeza-img.cabeza-3 {
+        top: -16px;       /* -20px * 0.80 = -16px */
+        width: 240px;
+        height: 240px;
+        margin-left: 8px; /* 10px * 0.80 = 8px */
+    }
+
+    /* Cabeza 5 - Oberon */
+    #cabeza-img.cabeza-4 {
+        top: -30px;       /* -38px * 0.80 ≈ -30px */
+        width: 240px;
+        height: 240px;
+        margin-left: 8px; /* 10px * 0.80 = 8px */
     }
 
     .selector {
