@@ -93,13 +93,3 @@ Se utilizan **media queries** en el CSS para adaptar tamaños de fuente, imágen
 | `JavaScript (Vanilla)` | Lógica del juego, aleatoriedad y comprobación |
 
 > No se utilizan librerías externas ni frameworks. El proyecto funciona directamente en cualquier navegador moderno sin necesidad de instalación.
-
----
-
-## 🚀 Instalación y Uso
-
-No requiere instalación. Simplemente:
-
-1. **Descarga o clona** este repositorio:
-   ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git

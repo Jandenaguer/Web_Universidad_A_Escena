@@ -2,43 +2,41 @@
 // Índice 0: Titania | Índice 1: Bottom | Índice 2: Hermia | Índice 3: Lysander
 const cabezas = [
     "img/cabeza1.png",   // Titania
-    "img/cabeza2.png",   // Oberon
+    "img/cabeza2.png",   // Bottom
     "img/cabeza3.png",   // Hermia
-    "img/cabeza4.png"    // Lysander
+    "img/cabeza4.png",   // Lysander
+    "img/cabeza5.png"    // Cabeza 5
 ];
 
 const trajes = [
     "img/traje1.png",    // Titania
-    "img/traje2.png",    // Oberon
+    "img/traje2.png",    // Bottom
     "img/traje3.png",    // Hermia
-    "img/traje4.png"     // Lysander
+    "img/traje4.png",    // Lysander
+    "img/traje5.png"     // Oberon
 ];
 
 const audios = [
     "audios/audio1.mp3", // Titania
-    "audios/audio2.mp3", // Oberon
+    "audios/audio2.mp3", // Bottom
     "audios/audio3.mp3", // Hermia
-    "audios/audio4.mp3"  // Lysander
+    "audios/audio4.mp3",// Lysander
+    "audios/audio5.mp3"  // Oberon
 ];
 
 const nombres = [
     "Titania",           // Índice 0
-    "Oberon",            // Índice 1
+    "Bottom",            // Índice 1
     "Hermia",            // Índice 2
-    "Lysander"           // Índice 3
+    "Lysander",          // Índice 3
+    "Oberon"           // Índice 4
 ];
 
-// --- Función para generar un índice aleatorio ---
-// Devuelve un número entero entre 0 y (max - 1)
-function indiceAleatorio(max) {
-    return Math.floor(Math.random() * max);
-}
-
-// Variables de índice: cada una empieza en un valor aleatorio e independiente
-let indiceCabeza = indiceAleatorio(cabezas.length);
-let indiceTraje  = indiceAleatorio(trajes.length);
-let indiceAudio  = indiceAleatorio(audios.length);
-let indiceNombre = indiceAleatorio(nombres.length);
+// Variables de índice
+let indiceCabeza = 0;
+let indiceTraje  = 0;
+let indiceAudio  = 0;
+let indiceNombre = 0;
 
 // Elementos del HTML
 const imgCabeza        = document.getElementById("cabeza-img");
@@ -48,17 +46,39 @@ const reproductorAudio = document.getElementById("reproductor-audio");
 const textoNombre      = document.getElementById("nombre-personaje");
 const mensajeResultado = document.getElementById("mensaje-resultado");
 
+// --- Función para aplicar la clase CSS de posición a la cabeza ---
+function aplicarClaseCabeza(indice) {
+    // Primero quitamos TODAS las clases de cabeza anteriores
+    imgCabeza.classList.remove("cabeza-0", "cabeza-1", "cabeza-2", "cabeza-3", "cabeza-4");
+    // Luego añadimos solo la clase que corresponde al índice actual
+    imgCabeza.classList.add("cabeza-" + indice);
+}
+
 // --- Función de inicialización ---
-// Aplica los índices aleatorios a la pantalla nada más cargar el juego
 function inicializar() {
+    // Generamos índices aleatorios
+    indiceCabeza = indiceAleatorio(cabezas.length);
+    indiceTraje  = indiceAleatorio(trajes.length);
+    indiceAudio  = indiceAleatorio(audios.length);
+    indiceNombre = indiceAleatorio(nombres.length);
+
+    // Aplicamos los valores a la pantalla
     imgCabeza.src              = cabezas[indiceCabeza];
     imgTraje.src               = trajes[indiceTraje];
     fuenteAudio.src            = audios[indiceAudio];
     reproductorAudio.load();
     textoNombre.textContent    = nombres[indiceNombre];
+
+    // Aplicamos la clase CSS de posición inicial
+    aplicarClaseCabeza(indiceCabeza);
 }
 
-// Llamamos a inicializar en cuanto carga la página
+// Función para generar un índice aleatorio
+function indiceAleatorio(max) {
+    return Math.floor(Math.random() * max);
+}
+
+// Llamamos a inicializar al cargar la página
 inicializar();
 
 // --- Funciones de cambio ---
@@ -68,6 +88,9 @@ function cambiarCabeza(direccion) {
     if (indiceCabeza < 0) indiceCabeza = cabezas.length - 1;
     else if (indiceCabeza >= cabezas.length) indiceCabeza = 0;
     imgCabeza.src = cabezas[indiceCabeza];
+
+    // Aplicamos la clase CSS de posición de la nueva cabeza
+    aplicarClaseCabeza(indiceCabeza);
     limpiarMensaje();
 }
 
