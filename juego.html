@@ -17,8 +17,9 @@
                 <span>Audio</span>
                 <button class="flecha" onclick="cambiarAudio(1)">&#9654;</button>
             </div>
-            <audio id="reproductor-audio" controls>
-                <source id="fuente-audio" src="audios/audio1.mp3" type="audio/mpeg">
+
+            <!-- Safari iOS: src directamente en el audio, sin <source> -->
+            <audio id="reproductor-audio" controls playsinline preload="metadata">
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>
@@ -38,14 +39,12 @@
 
         <!-- Controles para elegir -->
         <div class="controles">
-            <!-- Selector de Cabezas -->
             <div class="selector">
                 <button class="flecha" onclick="cambiarCabeza(-1)">&#9664;</button>
                 <span>Cabeza</span>
                 <button class="flecha" onclick="cambiarCabeza(1)">&#9654;</button>
             </div>
 
-            <!-- Selector de Trajes -->
             <div class="selector">
                 <button class="flecha" onclick="cambiarTraje(-1)">&#9664;</button>
                 <span>Traje</span>
@@ -53,7 +52,7 @@
             </div>
         </div>
 
-        <!-- NUEVO: Botón Adivinar y mensaje de resultado -->
+        <!-- Botón Adivinar y mensaje de resultado -->
         <button class="btn-adivinar" onclick="adivinar()">ADIVINAR</button>
         <div id="mensaje-resultado" class="mensaje-resultado"></div>
 

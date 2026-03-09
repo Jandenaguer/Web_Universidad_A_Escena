@@ -5,31 +5,31 @@ const cabezas = [
     "img/cabeza2.png",   // Bottom
     "img/cabeza3.png",   // Hermia
     "img/cabeza4.png",   // Lysander
-    "img/cabeza5.png"    // Cabeza 5
+    "img/cabeza5.png"    // Oberon
 ];
 
 const trajes = [
     "img/traje1.png",    // Titania
     "img/traje2.png",    // Bottom
     "img/traje3.png",    // Hermia
-    "img/traje4.png",    // Lysander
-    "img/traje5.png"     // Oberon
+    "img/traje4.png",
+    "img/traje5.png"     // Lysander
 ];
 
 const audios = [
     "audios/audio1.mp3", // Titania
     "audios/audio2.mp3", // Bottom
     "audios/audio3.mp3", // Hermia
-    "audios/audio4.mp3",// Lysander
-    "audios/audio5.mp3"  // Oberon
+    "audios/audio4.mp3",
+    "audios/audio5.mp3"  // Lysander
 ];
 
 const nombres = [
     "Titania",           // Índice 0
     "Bottom",            // Índice 1
     "Hermia",            // Índice 2
-    "Lysander",          // Índice 3
-    "Oberon"           // Índice 4
+    "Lysander",
+    "Oberon"           // Índice 3
 ];
 
 // Variables de índice
@@ -41,17 +41,21 @@ let indiceNombre = 0;
 // Elementos del HTML
 const imgCabeza        = document.getElementById("cabeza-img");
 const imgTraje         = document.getElementById("traje-img");
-const fuenteAudio      = document.getElementById("fuente-audio");
-const reproductorAudio = document.getElementById("reproductor-audio");
+const reproductorAudio = document.getElementById("reproductor-audio"); // ← Directo al <audio>
 const textoNombre      = document.getElementById("nombre-personaje");
 const mensajeResultado = document.getElementById("mensaje-resultado");
 
 // --- Función para aplicar la clase CSS de posición a la cabeza ---
 function aplicarClaseCabeza(indice) {
-    // Primero quitamos TODAS las clases de cabeza anteriores
     imgCabeza.classList.remove("cabeza-0", "cabeza-1", "cabeza-2", "cabeza-3", "cabeza-4");
-    // Luego añadimos solo la clase que corresponde al índice actual
     imgCabeza.classList.add("cabeza-" + indice);
+}
+
+// --- Función para cambiar el audio (compatible con Safari iOS) ---
+function actualizarAudio(indice) {
+    // En Safari iOS, lo más fiable es asignar src directamente al elemento <audio>
+    reproductorAudio.src = audios[indice];
+    reproductorAudio.load();
 }
 
 // --- Función de inicialización ---
@@ -63,14 +67,15 @@ function inicializar() {
     indiceNombre = indiceAleatorio(nombres.length);
 
     // Aplicamos los valores a la pantalla
-    imgCabeza.src              = cabezas[indiceCabeza];
-    imgTraje.src               = trajes[indiceTraje];
-    fuenteAudio.src            = audios[indiceAudio];
-    reproductorAudio.load();
-    textoNombre.textContent    = nombres[indiceNombre];
+    imgCabeza.src           = cabezas[indiceCabeza];
+    imgTraje.src            = trajes[indiceTraje];
+    textoNombre.textContent = nombres[indiceNombre];
 
-    // Aplicamos la clase CSS de posición inicial
+    // Aplicamos clase CSS de posición de cabeza
     aplicarClaseCabeza(indiceCabeza);
+
+    // Cargamos el audio directamente en el elemento <audio>
+    actualizarAudio(indiceAudio);
 }
 
 // Función para generar un índice aleatorio
@@ -88,8 +93,6 @@ function cambiarCabeza(direccion) {
     if (indiceCabeza < 0) indiceCabeza = cabezas.length - 1;
     else if (indiceCabeza >= cabezas.length) indiceCabeza = 0;
     imgCabeza.src = cabezas[indiceCabeza];
-
-    // Aplicamos la clase CSS de posición de la nueva cabeza
     aplicarClaseCabeza(indiceCabeza);
     limpiarMensaje();
 }
@@ -106,8 +109,9 @@ function cambiarAudio(direccion) {
     indiceAudio += direccion;
     if (indiceAudio < 0) indiceAudio = audios.length - 1;
     else if (indiceAudio >= audios.length) indiceAudio = 0;
-    fuenteAudio.src = audios[indiceAudio];
-    reproductorAudio.load();
+
+    // Usamos la función centralizada para mayor compatibilidad con Safari
+    actualizarAudio(indiceAudio);
     limpiarMensaje();
 }
 
