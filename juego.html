@@ -6,7 +6,7 @@
     <title>Creación de Personaje</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body>  
     <div class="game-container">
         <h2>Crea tu personaje</h2>
         
@@ -17,10 +17,12 @@
                 <span>Audio</span>
                 <button class="flecha" onclick="cambiarAudio(1)">&#9654;</button>
             </div>
-
-            <!-- Safari iOS: src directamente en el audio, sin <source> -->
-            <audio id="reproductor-audio" controls playsinline preload="metadata">
-                Tu navegador no soporta el elemento de audio.
+            <audio 
+                id="reproductor-audio" 
+                controls 
+                playsinline
+                preload="auto"
+                webkit-playsinline>
             </audio>
         </div>
 
