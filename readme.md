@@ -1,7 +1,7 @@
 # 🎭 Universidad a Escena — Teatro Real de Madrid
 
 Juego web interactivo desarrollado como parte del proyecto **Universidad a Escena** del **Teatro Real de Madrid**.
-Creado por **Ahinoa, Shan y Mario**.
+Creado por **Ainhoa, Shan y Mario**.
 
 ---
 
